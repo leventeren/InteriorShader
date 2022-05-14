@@ -1,0 +1,11 @@
+Just does the interior mapping with no additional effects (exterior walls, random lighting, etc.). Does do a random flip / rotation which effectively recreates the basic look of the cube map array version, but not the actual functionality as Emil was lazy and just used the same 6 textures over and over to create 8 "unique" cube maps.
+
+Shader "Custom/InteriorMapping - Cubemap"
+
+Started with something like the above cube map based interior mapping shader, but uses a single 2D texture atlas with variable room depth. Room depth is stored in the alpha channel of the atlas texture. For a cube shaped room the back wall should be 1/2 the size of the visible tile, and a value of 128 in the alpha channel. If you render these out you want to use a camera with a horizontal FOV of 53.13 degrees a room width back from the opening.
+
+Shader "Custom/InteriorMapping - 2D Atlas"
+
+Single tile version for basic debugging. Note it looks faded out here because it's alpha value is 50%!
+
+A 4x2 atlas with varying room lengths (1/2 room, cube, 2x length, 4x length) and lit / unlit variants. Again looks funny because of the alpha.
